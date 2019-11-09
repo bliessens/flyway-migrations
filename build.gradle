@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.2.1.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
+    id 'idea'
 }
 
 group = 'be.cheops'
@@ -31,4 +32,15 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+
+idea {
+    module {
+        outputDir = file("$rootDir/out/production/$name")
+        testOutputDir = file("$rootDir/out/test/$name")
+        excludeDirs += [file('.idea'), file('out'), file('.gradle'), file('build'), file('target')]
+        downloadJavadoc = true
+        downloadSources = true
+    }
 }
